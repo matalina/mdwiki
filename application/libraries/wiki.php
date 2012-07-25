@@ -63,6 +63,7 @@ class Wiki {
     $file = $dropbox->getFile('index.csv');
     $lines = explode(PHP_EOL,$file['data']);
     $output = '';
+    
     foreach($lines as $line) {
       if(!empty($line)) {
         $index = explode(',',$line);
