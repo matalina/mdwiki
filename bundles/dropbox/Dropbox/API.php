@@ -160,13 +160,21 @@ class API
 		
 		// Close the file handle if one was opened
 		if($handle) fclose($handle);
-
-		return array(
-			'name' => ($outFile) ? $outFile : basename($file),
-			'mime' => $this->getMimeType(($outFile) ?: $response['body'], $outFile),
-			'meta' => json_decode($response['headers']['x-dropbox-metadata']),
-			'data' => $response['body'],
-		);
+    
+    if($response['code']) {
+      return array(
+        'name' => \Laravel\URI::current(),
+        'data' => '#'.\Laravel\URI::current().'.md - File Not Found'.PHP_EOL.PHP_EOL.'The file needs to be created in your dropbox account.',
+      );  
+    }
+    else {
+  		return array(
+  			'name' => ($outFile) ? $outFile : basename($file),
+  			'mime' => $this->getMimeType(($outFile) ?: $response['body'], $outFile),
+  			'meta' => json_decode($response['headers']['x-dropbox-metadata']),
+  			'data' => $response['body'],
+  		);
+    }
 	}
 	
 	/**
