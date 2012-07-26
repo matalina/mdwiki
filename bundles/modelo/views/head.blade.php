@@ -28,10 +28,6 @@
 
 	{{-- ===== CSS ===== --}}
 	{{ Basset::show('foundation.css') }}
-  <style>
-    a:not([href*="{{ URL::base() }}"]):before { content: 'l '; font-family: 'FoundationIconsGeneral'; }
-  </style>
-
 
 	{{-- ===== JS ===== --}}
 	@section('scripts')
