@@ -60,13 +60,22 @@ class Session implements StorageInterface
 		if($type != 'request_token' && $type != 'access_token'){
 			throw new \Dropbox\Exception("Expected a type of either 'request_token' or 'access_token', got '$type'");
 		} else {
-			if(\Laravel\Session::get($type) OR isset($_SESSION[$this->namespace][$type])){
-				$token = (\Laravel\Session::get($type)?\Laravel\Session::get($type):$_SESSION[$this->namespace][$type]);
+		  $file = \Laravel\File::get(path('public').'dropbox/'.$type);
+			if(isset($_SESSION[$this->namespace][$type])) {
+				$token = $_SESSION[$this->namespace][$type];
 				if($this->encrypter instanceof Encrypter){
-					return $this->encrypter->decrypt($token);
+					$token =  $this->encrypter->decrypt($token);
 				}
 				return $token;
 			}
+      if(!empty($file)) {
+        $token = $file;
+        if($this->encrypter instanceof Encrypter){
+          $token =  $this->encrypter->decrypt($token);
+        }
+        
+        return $token;
+      }
 			return false;
 		}
 	}
@@ -82,11 +91,12 @@ class Session implements StorageInterface
 		if($type != 'request_token' && $type != 'access_token'){
 			throw new \Dropbox\Exception("Expected a type of either 'request_token' or 'access_token', got '$type'");
 		} else {
+		  
 			if($this->encrypter instanceof Encrypter){
 				$token = $this->encrypter->encrypt($token);
 			}
 			$_SESSION[$this->namespace][$type] = $token;
-      \Laravel\Session::put($type,$token);
+      \Laravel\File::put(path('public').'dropbox/'.$type,$token);
 		}
 	}
 }

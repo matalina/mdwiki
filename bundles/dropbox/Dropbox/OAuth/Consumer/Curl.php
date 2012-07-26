@@ -60,7 +60,7 @@ class Curl extends ConsumerAbstract
 	{
 		// Get the signed request URL
 		$request = $this->getSignedRequest($method, $url, $call, $additional);
-		
+    
 		// Initialise and execute a cURL request
 		$handle = curl_init($request['url']);
 		
@@ -96,12 +96,10 @@ class Curl extends ConsumerAbstract
 		if(is_string($response)){
 			$response = $this->parse($response);
 		}
-		
 		// Check if an error occurred and throw an Exception
 		if(!empty($response['body']->error)){
 			$message = $response['body']->error . ' (Status Code: ' . $response['code'] . ')';
-      return $response;
-			//throw new \Dropbox\Exception($message);
+			throw new \Dropbox\Exception($message);
 		}
 		
 		return $response;

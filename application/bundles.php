@@ -57,4 +57,9 @@ return array(
     'auto'    => true,
   ),
   
+  'basset' => array(
+    'handles' => 'basset',
+    'auto'    => true
+  ),
+  
 );

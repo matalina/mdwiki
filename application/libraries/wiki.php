@@ -34,6 +34,17 @@ class Wiki {
     $dropbox = IoC::resolve('dropbox::api');
     $file = $dropbox->getFile('index.csv');
     $lines = explode(PHP_EOL,$file['data']);
+    
+    function callback($matches)
+      {
+        global $page;
+        $label = $matches[0];
+        
+        $replace = '['.$label.']('.$page.')';
+        
+        return $replace;
+      };
+    
     foreach($lines as $line) {
       $index = explode(',',$line);
       $temp = explode('.',$index[0]);
@@ -48,12 +59,14 @@ class Wiki {
         
         return $replace;
       };
+      
       for($i = 1; $i < $count; $i++) {
         $keyword = $index[$i];
         $pattern = '/(?![\[\(])\b'.$keyword.'\b(?<![\]\)])/i';
         $raw = preg_replace_callback($pattern, $callback, $raw);
       }
     }
+    
     return $raw;
   }
   
@@ -63,7 +76,7 @@ class Wiki {
     $file = $dropbox->getFile('index.csv');
     $lines = explode(PHP_EOL,$file['data']);
     $output = '';
-    
+
     foreach($lines as $line) {
       if(!empty($line)) {
         $index = explode(',',$line);

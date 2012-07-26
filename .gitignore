@@ -35,3 +35,6 @@ dwsync.xml
 intermediate
 publish
 .idea
+
+#My Files to Ignore
+public/dropbox

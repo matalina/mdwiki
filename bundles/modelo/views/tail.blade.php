@@ -12,15 +12,7 @@
 		<script>window.jQuery || document.write('<script src="\/{{ Modelo::get('jquery_fallback') }}"><\/script>')</script>
 	@endif
 
-	{{-- Scripts concatenated and minified --}}
-	@section('more_scripts')
-
-		@foreach ( Modelo::get('scripts') as $script )
-			{{ HTML::script($script, array('defer')) }}
-		@endforeach
-
-	@yield_section
-	{{-- End scripts --}}
+	{{ Basset::show('foundation.js') }}
 
 
 	{{-- Asynchronous Google Analytics --}}
