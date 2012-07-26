@@ -94,7 +94,7 @@ abstract class ConsumerAbstract
 	{
 		// Get the request token
 		$token = $this->getToken();
-	
+    
 		// Prepare request parameters
 		$params = array(
 				'oauth_token' => $token->oauth_token,

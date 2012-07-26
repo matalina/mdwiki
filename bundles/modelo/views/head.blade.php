@@ -27,15 +27,10 @@
 
 
 	{{-- ===== CSS ===== --}}
-	@section('styles')
-		{{ HTML::style(Modelo::get('css')) }}
-	@yield_section
-
-
-	{{-- Custom stylesheet --}}
-	@yield('custom_style')
-	{{-- The custom_style tag lets you add stylesheets that are specific to a webpage --}}
-
+	{{ Basset::show('foundation.css') }}
+  <style>
+    a:not([href*="{{ URL::base() }}"]):before { content: 'l '; font-family: 'FoundationIconsGeneral'; }
+  </style>
 
 
 	{{-- ===== JS ===== --}}

@@ -6,3 +6,4 @@
 4. To change hosts and some other files must open file as an administrator
 5. /\[\[([^\|\]]*)\|?([^\]]*)\]\]/ regex pattern will parse MediaWiki Link Syntax
 6. Laravel\Database\Eloquent\Pivot::$timestamps = false; to disable all pivot table timestamps
+7. /(?<![\[\()\bkeyword\b(?<![\]\))/i case insensative multiple keywords replacement 
