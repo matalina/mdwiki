@@ -96,10 +96,13 @@ class Curl extends ConsumerAbstract
 		if(is_string($response)){
 			$response = $this->parse($response);
 		}
+    
 		// Check if an error occurred and throw an Exception
 		if(!empty($response['body']->error)){
-			$message = $response['body']->error . ' (Status Code: ' . $response['code'] . ')';
-			throw new \Dropbox\Exception($message);
+			$message = '#'.$response['body']->error . ' (Status Code: ' . $response['code'] . ')'.PHP_EOL.PHP_EOL.'Page does not exist in your dropbox account.';
+			//throw new \Dropbox\Exception($message);
+			$response['body'] = $message;
+      $response['headers']['x-dropbox-metadata'] = '{}';
 		}
 		
 		return $response;
