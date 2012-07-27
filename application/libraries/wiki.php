@@ -2,33 +2,8 @@
 
 class Wiki {
   /**
-   * Parse MediaWiki Syntax Internal Links to Markdown Links
-   
-  public static function _parseLinks($raw) 
-  {
-    $pattern = '/\[\[([^\|\]]*)\|?([^\]]*)\]\]/';
-    
-    $callback = function ($matches) 
-    {
-      $slug = Str::slug($matches[1]);
-      
-      if(isset($matches[2]) && $matches[2] != '') {
-        $label = $matches[2];
-      }
-      else {
-        $label = $matches[1];
-      }
-      
-      $replace = '['.$label.'](/page/'.$slug.')';
-      
-      return $replace;
-    };
-    
-    $raw = preg_replace_callback($pattern, $callback, $raw);
-    
-    return $raw;
-  }*/
-  
+   * Parse Internal Wiki LInks
+   */
   public static function parseLinks($raw) 
   {
     $dropbox = IoC::resolve('dropbox::api');
@@ -70,5 +45,21 @@ class Wiki {
       }
     }
     return $output;
+  }
+  
+  public static function getPage($page)
+  {
+    $result = array();
+    $dropbox = IoC::resolve('dropbox::api');
+    $file = $dropbox->getFile($page.'.md');
+    $name = explode('.',$file['name']);
+    $output = $file['data'];
+    $description = preg_replace('/[^a-zA-Z0-9 ]/','',Str::words($output,20));
+    $output = Wiki::parseLinks($output);
+    $content =  Sparkdown\Markdown($output);
+    $result['title'] = Str::title($name[0]);
+    $result['content'] = $content;
+    $result['description'] = $description;
+    return $result;
   }
 }
