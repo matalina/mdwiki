@@ -13,11 +13,6 @@
    Shared Styles
 ----------------------------------------- */
 #main ol, #main ul { padding-left: 2rem; }
-/*a:not([href*='mdwiki.local']):after
-{ 
-  content: ' l' !important; 
-  font-family: 'FoundationIconsGeneral'; 
-}*/
 
 /* -----------------------------------------
    Page Name 1
