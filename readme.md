@@ -21,6 +21,7 @@ A personal static file wiki using Markdown Syntax.  With an index file internal 
 * ChromePhp
 
 ##Change Log
+2012-07-26: Fixed a Unix Bug with internal link parsing
 2012-07-26: Added Foundation 3 for base templating with Foundation web icons support & Basset Bundle for asset control
 2012-07-26: Viewable to public after your first visit.
 2012-07-25: Fixed non-missing file issue related to last change

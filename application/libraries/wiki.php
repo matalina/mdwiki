@@ -33,17 +33,8 @@ class Wiki {
   {
     $dropbox = IoC::resolve('dropbox::api');
     $file = $dropbox->getFile('index.csv');
-    $lines = explode(PHP_EOL,$file['data']);
-    
-    function callback($matches)
-      {
-        global $page;
-        $label = $matches[0];
-        
-        $replace = '['.$label.']('.$page.')';
-        
-        return $replace;
-      };
+    $file = str_replace("\r",'',$file);
+    $lines = explode("\n",$file['data']);
     
     foreach($lines as $line) {
       $index = explode(',',$line);
@@ -51,22 +42,14 @@ class Wiki {
       $page = $temp[0];
       $count = count($index);
       
-      $callback = function ($matches) use ($page)
-      {
-        $label = $matches[0];
-        
-        $replace = '['.$label.']('.$page.')';
-        
-        return $replace;
-      };
-      
       for($i = 1; $i < $count; $i++) {
         $keyword = $index[$i];
-        $pattern = '/(?![\[\(])\b'.$keyword.'\b(?<![\]\)])/i';
-        $raw = preg_replace_callback($pattern, $callback, $raw);
+        $pattern = '/(?<![\[\(])\b'.$keyword.'\b(?<![\]\)])/i';
+        $replace = '[$0]('.$page.')';
+        $raw = preg_replace($pattern, $replace,$raw,-1,$count);
+        preg_match_all($pattern,$raw,$matches);
       }
     }
-    
     return $raw;
   }
   
