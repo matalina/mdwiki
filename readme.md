@@ -3,7 +3,6 @@
 A personal static file wiki using Markdown Syntax.  With an index file internal links are generated dynamically with out marring the saved files.  Files are saved in your dropbox account.
 
 ##Requirements
-* PHP >= 5.4.0
 * cURL
 * mcrypt
 * Dropbox Account
