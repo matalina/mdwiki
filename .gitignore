@@ -37,4 +37,4 @@ publish
 .idea
 
 #My Files to Ignore
-public/dropbox
+storage/dropbox

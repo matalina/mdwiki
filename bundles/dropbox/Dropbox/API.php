@@ -166,6 +166,7 @@ class API
 			'mime' => $this->getMimeType(($outFile) ?: $response['body'], $outFile),
 			'meta' => json_decode($response['headers']['x-dropbox-metadata']),
 			'data' => $response['body'],
+			'code' => $response['code'],
 		);
 	}
 	

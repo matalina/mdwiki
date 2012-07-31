@@ -1,0 +1,25 @@
+<?php \Laravel\Section::start('tail'); ?>
+
+<?php //  ===== Javascript ===== --}} ?>  <script>
+    var BASE = '<?php echo URL::base(); ?>';
+  </script>
+
+  
+	<?php //  Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline --}} ?>	<?php if ( Modelo::get('jquery_on') ): ?>
+		<?php echo  HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/'.Modelo::get('jquery_version').'/jquery.min.js') ; ?>
+		<script>window.jQuery || document.write('<script src="\/<?php echo  Modelo::get('jquery_fallback') ; ?>"><\/script>')</script>
+	<?php endif; ?>
+
+	<?php echo  Basset::show('foundation.js') ; ?>
+
+
+	<?php //  Asynchronous Google Analytics --}} ?>	<?php if ( Modelo::get('analytics_on') ): ?>
+	  <script>
+	    var _gaq=[['_setAccount','<?php echo  Modelo::get("analytics_id") ; ?>'],['_trackPageview']];
+	    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	    s.parentNode.insertBefore(g,s)}(document,'script'));
+	  </script>
+	<?php endif; ?>
+
+<?php echo \Laravel\Section::yield_section(); ?>

@@ -2,48 +2,14 @@
 
 class Wiki {
   /**
-   * Parse MediaWiki Syntax Internal Links to Markdown Links
-   
-  public static function _parseLinks($raw) 
-  {
-    $pattern = '/\[\[([^\|\]]*)\|?([^\]]*)\]\]/';
-    
-    $callback = function ($matches) 
-    {
-      $slug = Str::slug($matches[1]);
-      
-      if(isset($matches[2]) && $matches[2] != '') {
-        $label = $matches[2];
-      }
-      else {
-        $label = $matches[1];
-      }
-      
-      $replace = '['.$label.'](/page/'.$slug.')';
-      
-      return $replace;
-    };
-    
-    $raw = preg_replace_callback($pattern, $callback, $raw);
-    
-    return $raw;
-  }*/
-  
+   * Parse Internal Wiki LInks
+   */
   public static function parseLinks($raw) 
   {
     $dropbox = IoC::resolve('dropbox::api');
     $file = $dropbox->getFile('index.csv');
-    $lines = explode(PHP_EOL,$file['data']);
-    
-    function callback($matches)
-      {
-        global $page;
-        $label = $matches[0];
-        
-        $replace = '['.$label.']('.$page.')';
-        
-        return $replace;
-      };
+    $file = str_replace("\r",'',$file);
+    $lines = explode("\n",$file['data']);
     
     foreach($lines as $line) {
       $index = explode(',',$line);
@@ -51,22 +17,14 @@ class Wiki {
       $page = $temp[0];
       $count = count($index);
       
-      $callback = function ($matches) use ($page)
-      {
-        $label = $matches[0];
-        
-        $replace = '['.$label.']('.$page.')';
-        
-        return $replace;
-      };
-      
       for($i = 1; $i < $count; $i++) {
         $keyword = $index[$i];
-        $pattern = '/(?![\[\(])\b'.$keyword.'\b(?<![\]\)])/i';
-        $raw = preg_replace_callback($pattern, $callback, $raw);
+        $pattern = '/(?<![\[\(])\b'.$keyword.'\b(?<![\]\)])/i';
+        $replace = '[$0]('.$page.')';
+        $raw = preg_replace($pattern, $replace,$raw,-1,$count);
+        preg_match_all($pattern,$raw,$matches);
       }
     }
-    
     return $raw;
   }
   
@@ -74,8 +32,9 @@ class Wiki {
   {
     $dropbox = IoC::resolve('dropbox::api');
     $file = $dropbox->getFile('index.csv');
+    
     $lines = explode(PHP_EOL,$file['data']);
-    $output = '';
+    $output = '#Site Map'.PHP_EOL;
 
     foreach($lines as $line) {
       if(!empty($line)) {
@@ -87,5 +46,44 @@ class Wiki {
       }
     }
     return $output;
+  }
+  
+  public static function getPage($page)
+  {
+    $result = array();
+    $dropbox = IoC::resolve('dropbox::api');
+    $file = $dropbox->getFile($page.'.md');
+    
+    if($file['code'] == 404 && $page == 'home') {
+      $dropbox->putFile(path('storage').'wiki/home.md','home.md');
+      $dropbox->putFile(path('storage').'wiki/index.csv','index.csv');
+      $file = $dropbox->getFile($page.'.md');
+    }
+    $name = explode('.',$file['name']);
+    $output = $file['data'];
+    $description = preg_replace('/[^a-zA-Z0-9 ]/','',Str::words($output,20));
+    $output = Wiki::parseLinks($output);
+    $content =  Sparkdown\Markdown($output);
+    $result['title'] = Str::title($name[0]);
+    $result['content'] = $content;
+    $result['description'] = $description;
+    return $result;
+  }
+  
+  public static function randomPage()
+  {
+    $result = array();
+    $dropbox = IoC::resolve('dropbox::api');
+    
+    $file = $dropbox->getFile('index.csv');
+    $lines = explode(PHP_EOL,$file['data']);
+    
+    $random = array_rand($lines);
+    
+    $index = explode(',',$lines[$random]);
+    $temp = explode('.',$index[0]);
+    $page = $temp[0];
+    
+    return $page;
   }
 }

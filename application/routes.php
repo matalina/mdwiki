@@ -31,19 +31,18 @@
 |		});
 |
 */
+Route::get('random', function () {
+  $page = Wiki::randomPage();
+  return Redirect::to($page);
+});
 
 // Home Page
-Route::get('/', function() 
+Route::get('/?([a-zA-Z0-9\/\-_]+)?', function($page = 'home') 
 {
-  $dropbox = IoC::resolve('dropbox::api');
-  $file = $dropbox->getFile('home.md');
-  $name = explode('.',$file['name']);
-  $output = $file['data'];
-  Section::inject('description',preg_replace('/[^a-zA-Z0-9 ]/','',Str::words($output,20)));
-  $output = Wiki::parseLinks($output);
-  $content =  Sparkdown\Markdown($output);
-  Section::inject('title', Str::title($name[0]));
-  Section::inject('content', $content);
+  $content = Wiki::getPage($page);
+  Section::inject('title', $content['title']);
+  Section::inject('description',$content['description']);
+  Section::inject('content', $content['content']);
   return View::make('modelo::master');
 });
 
@@ -52,20 +51,6 @@ Route::get('index', function ()
   Section::inject('title', 'Index');
   $output = Wiki::showIndex();
   $content =  Sparkdown\Markdown($output);
-  Section::inject('content', $content);
-  return View::make('modelo::master');
-});
-
-Route::get('([a-zA-Z0-9\/\-_]+)', function ($page)
-{
-  $dropbox = IoC::resolve('dropbox::api');
-  $file = $dropbox->getFile($page.'.md');
-  $name = explode('.',$file['name']);
-  $output = $file['data'];
-  Section::inject('description',preg_replace('/[^a-zA-Z0-9 ]/','',Str::words($output,20)));
-  $output = Wiki::parseLinks($output);
-  $content =  Sparkdown\Markdown($output);
-  Section::inject('title', Str::title($name[0]));
   Section::inject('content', $content);
   return View::make('modelo::master');
 });
