@@ -34,7 +34,7 @@ class Wiki {
     $file = $dropbox->getFile('index.csv');
     
     $lines = explode(PHP_EOL,$file['data']);
-    $output = '';
+    $output = '#Site Map'.PHP_EOL;
 
     foreach($lines as $line) {
       if(!empty($line)) {
@@ -68,5 +68,22 @@ class Wiki {
     $result['content'] = $content;
     $result['description'] = $description;
     return $result;
+  }
+  
+  public static function randomPage()
+  {
+    $result = array();
+    $dropbox = IoC::resolve('dropbox::api');
+    
+    $file = $dropbox->getFile('index.csv');
+    $lines = explode(PHP_EOL,$file['data']);
+    
+    $random = array_rand($lines);
+    
+    $index = explode(',',$lines[$random]);
+    $temp = explode('.',$index[0]);
+    $page = $temp[0];
+    
+    return $page;
   }
 }

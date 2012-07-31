@@ -31,6 +31,10 @@
 |		});
 |
 */
+Route::get('random', function () {
+  $page = Wiki::randomPage();
+  return Redirect::to($page);
+});
 
 // Home Page
 Route::get('/?([a-zA-Z0-9\/\-_]+)?', function($page = 'home') 

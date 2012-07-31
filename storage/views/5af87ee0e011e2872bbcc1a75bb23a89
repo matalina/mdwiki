@@ -1,2 +1,17 @@
   </div> <!-- end twelve columns -->
 </div> <!-- end row -->
+<footer class="row">
+  <dl class="six columns sub-nav">
+    <dt>Navigation:</dt>
+    <dd><?php echo  HTML::link('/','Home') ; ?></dd>
+    <dd><?php echo  HTML::link('random','Random Page') ; ?></dd>
+    <dd><?php echo  HTML::link('index','Site Map') ; ?></dd>
+  </dl>
+  <div class="six columns text-right" id="copyright">
+    All rights reserved | &copy 2012 
+    <?php if(date('Y') != 2012): ?>
+     <?php echo  ' - '.date('Y') ; ?>
+    <?php endif; ?>
+     | <a href="http://matalina.github.com/mdwiki">Download MDWiki</a>
+  </div>
+</footer>

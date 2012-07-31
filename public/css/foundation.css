@@ -644,7 +644,7 @@ dl.tabs.pill dd { margin-right: 10px; }
 dl.tabs.pill dd:last-child { margin-right: 0; }
 dl.tabs.pill dd a { -webkit-border-radius: 1000px; -moz-border-radius: 1000px; -ms-border-radius: 1000px; -o-border-radius: 1000px; border-radius: 1000px; background: #e6e6e6; height: 26px; line-height: 26px; color: #666; }
 dl.tabs.pill dd.active { border: none; margin-top: 0; }
-dl.tabs.pill dd.active a { background-color: #ff7700; border: none; color: #fff; }
+dl.tabs.pill dd.active a, dl.tabs.pill dd a:hover, dl.tabs.pill dd a:focus { background-color: #ff7700; border: none; color: #fff; }
 dl.tabs.pill.contained { border-bottom: solid 1px #eee; margin-bottom: 0; }
 dl.tabs.two-up dt a, dl.tabs.two-up dd a, dl.tabs.three-up dt a, dl.tabs.three-up dd a, dl.tabs.four-up dt a, dl.tabs.four-up dd a, dl.tabs.five-up dt a, dl.tabs.five-up dd a { padding: 0 17px; text-align: center; overflow: hidden; }
 dl.tabs.two-up dt, dl.tabs.two-up dd { width: 50%; }

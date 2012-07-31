@@ -1,6 +1,5 @@
 <nav class="row">
-  <dl class="five columns offset-by-seven sub-nav">
-    <dt>Navigation:</dt>
+  <dl class="five columns offset-by-seven tabs pill">
     <dd>{{ HTML::link('/','Home') }}</dd>
     <dd>{{ HTML::link('random','Random Page') }}</dd>
     <dd>{{ HTML::link('index','Site Map') }}</dd>
