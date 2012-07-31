@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<!--[if IE 7]><html class="no-js ie7 oldie" lang="<?php echo  Modelo::get('language') ; ?>"> <![endif]-->
+<!--[if IE 8]><html class="no-js ie8 oldie" lang="<?php echo  Modelo::get('language') ; ?>"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="<?php echo  Modelo::get('language') ; ?>"> <!--<![endif]-->
+
+<head>
+	<?php echo view('modelo::head')->with(get_defined_vars())->render(); ?>
+</head>
+
+<body class="<?php echo \Laravel\Section::yield('tags'); ?>">
+
+	<?php if (View::exists('common.header')): ?>
+		<?php echo view('common.header')->with(get_defined_vars())->render(); ?>
+	<?php endif; ?>
+
+
+	<div id="main">
+		<?php echo \Laravel\Section::yield('content'); ?>
+	</div>
+
+  
+	<?php if (View::exists('common.footer')): ?>
+		<?php echo view('common.footer')->with(get_defined_vars())->render(); ?>
+	<?php endif; ?>
+
+
+	<?php echo view('modelo::tail')->with(get_defined_vars())->render(); ?>
+
+</body>
+</html>
