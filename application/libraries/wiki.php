@@ -32,6 +32,7 @@ class Wiki {
   {
     $dropbox = IoC::resolve('dropbox::api');
     $file = $dropbox->getFile('index.csv');
+    
     $lines = explode(PHP_EOL,$file['data']);
     $output = '';
 
@@ -52,6 +53,12 @@ class Wiki {
     $result = array();
     $dropbox = IoC::resolve('dropbox::api');
     $file = $dropbox->getFile($page.'.md');
+    
+    if($file['code'] == 404 && $page == 'home') {
+      $dropbox->putFile(path('storage').'wiki/home.md','home.md');
+      $dropbox->putFile(path('storage').'wiki/index.csv','index.csv');
+      $file = $dropbox->getFile($page.'.md');
+    }
     $name = explode('.',$file['name']);
     $output = $file['data'];
     $description = preg_replace('/[^a-zA-Z0-9 ]/','',Str::words($output,20));
