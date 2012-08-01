@@ -20,6 +20,7 @@ A personal static file wiki using Markdown Syntax.  With an index file internal 
 * ChromePhp
 
 ##Change Log
+* 2012-08-01: Heirarchial Site Map based on index file
 * 2012-07-31: Added random page added, Default Navigation added.
 * 2012-07-31: Added home.md and index.csv when 404 is found on home page
 * 2012-07-26: Refactored Get files from Dropbox
@@ -35,7 +36,7 @@ A personal static file wiki using Markdown Syntax.  With an index file internal 
 * Verify file exists before trying to parse it (Completed 7/25/2012)
 * Figure out how to make viewable to the public (Completed 7/25/2012)
 * Check if  home.md and index.csv files exist on association with dropbox if not create basic ones and save to dropbox (Completed 7/31/2012)
-* Work index generation to add heirarchy to index via directory structure
+* Work index generation to add heirarchy to index via directory structure (Completed 8/1/2012)
 * Random Page (Completed 7/31/2012)
 * Google Search??
 * Make multiuser (postponed until further notice)

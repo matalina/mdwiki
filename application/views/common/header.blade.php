@@ -5,5 +5,5 @@
     <dd>{{ HTML::link('index','Site Map') }}</dd>
   </dl>
 </nav>
-<div class="row" id="main">
+<div class="row">
   <div class="twelve columns">
