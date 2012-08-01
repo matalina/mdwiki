@@ -16,9 +16,21 @@
 nav { padding-top: 1rem; }
 
 /* -----------------------------------------
-   Page Name 1
+   Site Map
 ----------------------------------------- */
-
+.sitemap #main{
+  -moz-column-count: 3;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 20px;
+  column-count: 3;
+  column-gap: 20px;
+}
+.sitemap h1 {
+  -moz-column-span: all;
+  -webkit-column-span: all;
+  column-span: all
+}
 
 
 

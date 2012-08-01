@@ -49,6 +49,8 @@ Route::get('/?([a-zA-Z0-9\/\-_]+)?', function($page = 'home')
 Route::get('index', function () 
 {
   Section::inject('title', 'Index');
+  Section::inject('description','Site Map');
+  Section::inject('tags','sitemap');
   $output = Wiki::showIndex();
   $content =  Sparkdown\Markdown($output);
   Section::inject('content', $content);
