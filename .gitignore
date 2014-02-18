@@ -35,6 +35,4 @@ dwsync.xml
 intermediate
 publish
 .idea
-
-#My Files to Ignore
-storage/dropbox
+vendor

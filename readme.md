@@ -1,42 +1,21 @@
-#Markdown Wiki
+## Laravel PHP Framework
 
-A personal static file wiki using Markdown Syntax.  With an index file internal links are generated dynamically with out marring the saved files.  Files are saved in your dropbox account.
+[![Latest Stable Version](https://poser.pugx.org/laravel/framework/version.png)](https://packagist.org/packages/laravel/framework) [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.png)](https://packagist.org/packages/laravel/framework) [![Build Status](https://travis-ci.org/laravel/framework.png)](https://travis-ci.org/laravel/framework) [![License](https://poser.pugx.org/laravel/framework/license.png)](https://packagist.org/packages/laravel/framework) 
 
-##Requirements
-* cURL
-* mcrypt
-* Dropbox Account
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
 
-##Components
-* Laravel
-* Sparkdown
-* Modelo
-* Dropbox API
-* Basset
-* Foundation 3.0
+Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
 
-##Included Bundles for Development
-* Artisan Web Bundle
-* ChromePhp
+Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
 
-##Change Log
-* 2012-08-01: Heirarchial Site Map based on index file
-* 2012-07-31: Added random page added, Default Navigation added.
-* 2012-07-31: Added home.md and index.csv when 404 is found on home page
-* 2012-07-26: Refactored Get files from Dropbox
-* 2012-07-26: Fixed a Unix Bug with internal link parsing  
-* 2012-07-26: Added Foundation 3 for base templating with Foundation web icons support & Basset Bundle for asset control  
-* 2012-07-26: Viewable to public after your first visit.  
-* 2012-07-25: Fixed non-missing file issue related to last change  
-* 2012-07-25: Updated Dropbox API to allow for missing files instead of throwing an exception  
-* 2012-07-25: Initial Release  
+## Official Documentation
 
-##To Do List
-* Figure out how to save dropbox auth to session (Completed 7/25/2012)
-* Verify file exists before trying to parse it (Completed 7/25/2012)
-* Figure out how to make viewable to the public (Completed 7/25/2012)
-* Check if  home.md and index.csv files exist on association with dropbox if not create basic ones and save to dropbox (Completed 7/31/2012)
-* Work index generation to add heirarchy to index via directory structure (Completed 8/1/2012)
-* Random Page (Completed 7/31/2012)
-* Google Search??
-* Make multiuser (postponed until further notice)
+Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
+
+### Contributing To Laravel
+
+**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
+
+### License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
