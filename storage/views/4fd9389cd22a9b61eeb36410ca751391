@@ -1,9 +1,0 @@
-<nav class="row">
-  <dl class="five columns offset-by-seven tabs pill">
-    <dd><?php echo  HTML::link('/','Home') ; ?></dd>
-    <dd><?php echo  HTML::link('random','Random Page') ; ?></dd>
-    <dd><?php echo  HTML::link('index','Site Map') ; ?></dd>
-  </dl>
-</nav>
-<div class="row">
-  <div class="twelve columns">
