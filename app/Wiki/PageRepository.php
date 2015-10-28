@@ -3,17 +3,36 @@
 use App\Wiki\PageInterface;
 use \Storage;
 use \Config;
-use League\CommonMark\CommonMarkConverter as MarkDown;
+use League\CommonMark\DocParser;
+use League\CommonMark\Environment;
+use League\CommonMark\HtmlRenderer;
+use App\Composers\LaravelLinkRenderer;
 
 class PageRepository implements PageInterface
 {
     protected $disk;
-    protected $markdown;
+    protected $parser;
+    protected $renderer;
     
-    public function __construct(MarkDown $markdown)
+    public function __construct()
     {
-        $this->disk = Storage::disk(Config::get('storage_type'));    
-        $this->markdown = $markdown;
+        $this->disk = Storage::disk(Config::get('storage_type')); 
+        
+        $environment = Environment::createCommonMarkEnvironment();
+        $environment->addInlineRenderer('Link', new LaravelLinkRenderer());
+        $parser = new DocParser($environment);
+        $htmlRenderer = new HtmlRenderer($environment);
+        
+        $this->parser = $parser;
+        $this->renderer = $htmlRenderer;
+    }
+    
+    protected function convertToHtml($markdown)
+    {
+        $document = $this->parser->parse($markdown);
+        $html = $this->renderer->renderBlock($document);
+        
+        return $html;
     }
     
     public function getFilePath($arg1, $arg2, $arg3, $arg4, $arg5)
@@ -55,7 +74,7 @@ class PageRepository implements PageInterface
     {
         $file = $this->disk->get($path);
         
-        $contents = $this->markdown->convertToHtml($file);
+        $contents = $this->convertToHtml($file);
         
         return $contents;
     }
