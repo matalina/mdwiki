@@ -7,6 +7,7 @@ use League\CommonMark\DocParser;
 use League\CommonMark\Environment;
 use League\CommonMark\HtmlRenderer;
 use App\Composers\LaravelLinkRenderer;
+use App\Composers\WikiImageRenderer;
 
 class PageRepository implements PageInterface
 {
@@ -20,6 +21,7 @@ class PageRepository implements PageInterface
         
         $environment = Environment::createCommonMarkEnvironment();
         $environment->addInlineRenderer('Link', new LaravelLinkRenderer());
+        $environment->addInlineRenderer('Image', new WikiImageRenderer());
         $parser = new DocParser($environment);
         $htmlRenderer = new HtmlRenderer($environment);
         

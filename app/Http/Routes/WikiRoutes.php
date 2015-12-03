@@ -22,9 +22,14 @@ class WikiRoutes implements RouteBinder
 
     public function addRoutes(Registrar $router)
     {
+        $router->get('image/{filename}', [
+            'as' => 'image',
+            'uses' => 'App\Http\Controllers\WikiController@getImage',
+        ]);
         $router->get('/{arg1?}/{arg2?}/{arg3?}/{arg4?}/{arg5?}', [
             'as' => 'page', 
             'uses' => 'App\Http\Controllers\WikiController@getPage',
         ]);
+        
     }
 }

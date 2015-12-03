@@ -27,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
             'App\Wiki\PageInterface',
             'App\Wiki\PageRepository'
         );
+        
+        $this->app->bind(
+            'App\Wiki\ImageInterface',
+            'App\Wiki\ImageRepository'
+        );
 
     }
 }
