@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => 'local',
+    'default' => env('APP_STORAGE','local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -81,6 +81,7 @@ return [
         ],
         
         'dropbox' => [
+            'driver' => 'dropbox',
             'accessToken' => env('DROPBOX_ACCESS_TOKEN'),
             'clientIdentifier' => env('DROPBOX_CLIENT_ID'),
         ],

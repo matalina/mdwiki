@@ -2,5 +2,5 @@
 
 return [
     'extension' => 'md',
-    'storage_type' => 'local',
+    'storage_type' => env('APP_STORAGE','local'),
 ];

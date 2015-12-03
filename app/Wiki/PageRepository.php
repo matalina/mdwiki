@@ -17,7 +17,7 @@ class PageRepository implements PageInterface
     
     public function __construct()
     {
-        $this->disk = Storage::disk(Config::get('storage_type')); 
+        $this->disk = Storage::disk(Config::get('wiki.storage_type')); 
         
         $environment = Environment::createCommonMarkEnvironment();
         $environment->addInlineRenderer('Link', new LaravelLinkRenderer());
