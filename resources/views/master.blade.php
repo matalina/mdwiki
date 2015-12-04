@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>{{ $title }} | {{ Config::get('wiki.page_title') }}</title>
-    <link rel="stylesheet" href="{{ secure_url('css/app.css') }}" />
+    <link rel="stylesheet" href="{{ url('css/app.css') }}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
     </head>
     <body>
@@ -35,6 +35,6 @@
             </div>
         </div>
         
-        <script src="{{ secure_url('js/all.js') }}"></script>
+        <script src="{{ url('js/all.js') }}"></script>
     </body>
 </html>
