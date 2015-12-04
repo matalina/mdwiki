@@ -57,6 +57,8 @@ class MenuComposer
     {
         $menu .= '<ul'.(!$nested?' data-drilldown':'').' class="vertical menu">';
         $sub_menu = '';
+        
+        
         foreach($items->all() as $name => $output) {
             if(is_string($output)) {
                 $menu .= '<li><a href="'.url($output).'">'.$name.'</a></li>';
@@ -71,6 +73,7 @@ class MenuComposer
     
     protected function recursiveMenuCreation($items, $path) 
     {
+        
         $dirs = $this->disk->directories($path);
         $files = $this->disk->files($path);
         
@@ -80,7 +83,13 @@ class MenuComposer
             preg_match('/[0-9]*\-?(.+)/', $uri[0], $match);
             $name = str_replace('-', ' ', $match[1]);
             $link = explode('.', $file);
-            $items->put($name, $link[0]);
+            if(Config::get('wiki.storage_type') == 'local') {
+                $link_uri = str_replace('content/','',$link[0]);
+            }
+            else {
+                $link_uri = $link[0];
+            }
+            $items->put($name, $link_uri);
         }
         
         foreach($dirs as $dir) {
