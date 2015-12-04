@@ -77,9 +77,15 @@ class PageRepository implements PageInterface
     {
         $file = $this->disk->get($path);
         
-        $parts = explode('---', $file);
+        $check = explode(PHP_EOL, $file);
         
-        $markdown = $parts[count($parts) - 1];
+        if($check[0] == '---') {
+            $parts = explode('---', $file);
+            $markdown = $parts[count($parts) - 1];
+        }
+        else {
+            $markdown = $file;
+        }
         
         $contents = $this->convertToHtml($markdown);
         
@@ -92,8 +98,16 @@ class PageRepository implements PageInterface
         
         $parts = explode('---', $file);
         
-        if(count($parts) > 1) {
-            $front = $parts[1];
+        $check = explode(PHP_EOL, $file);
+        
+        if($check[0] == '---') {
+            $parts = explode('---', $file);
+            if(count($parts) > 1) {
+                $front = $parts[1];
+            }
+            else {
+                $front = '';
+            }
         }
         else {
             $front = '';
