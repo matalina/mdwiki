@@ -90,10 +90,10 @@ class MenuComposer
             
             $segments = explode('/',$dir);
             $uri = $segments[count($segments) - 1];
-            
+            preg_match('/[0-9]*\-?(.+)/', $uri, $match);
             $new_dir = new Collection();
             $new_dir = $this->recursiveMenuCreation($new_dir, $dir);
-            $name = str_replace('-', ' ', $uri);
+            $name = str_replace('-', ' ', $match[1]);
             $items->put($name, $new_dir);
         }
         
