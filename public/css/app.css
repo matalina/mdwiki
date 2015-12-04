@@ -1909,7 +1909,7 @@ h6 {
 }
 
 a {
-  color: #2199e8;
+  color: #EC5800;
   text-decoration: none;
   line-height: inherit;
   cursor: pointer;
@@ -1917,7 +1917,7 @@ a {
 
 a:hover,
 a:focus {
-  color: #1585cf;
+  color: #cb4c00;
 }
 
 a img {
@@ -2210,7 +2210,7 @@ p + .stat {
   padding: 0.85em 1em;
   margin: 0 1rem 1rem 0;
   font-size: 0.9rem;
-  background: #2199e8;
+  background: #EC5800;
   color: #fff;
 }
 
@@ -2220,7 +2220,7 @@ p + .stat {
 
 .button:hover,
 .button:focus {
-  background: #1583cc;
+  background: #c94b00;
   color: #fff;
 }
 
@@ -2244,24 +2244,24 @@ p + .stat {
 }
 
 .button.primary {
-  background: #2199e8;
+  background: #EC5800;
   color: #fff;
 }
 
 .button.primary:hover,
 .button.primary:focus {
-  background: #147cc0;
+  background: #bd4600;
   color: #fff;
 }
 
 .button.secondary {
-  background: #777;
+  background: #EC0000;
   color: #fff;
 }
 
 .button.secondary:hover,
 .button.secondary:focus {
-  background: #5f5f5f;
+  background: #bd0000;
   color: #fff;
 }
 
@@ -2299,8 +2299,8 @@ p + .stat {
 }
 
 .button.hollow {
-  border: 1px solid #2199e8;
-  color: #2199e8;
+  border: 1px solid #EC5800;
+  color: #EC5800;
 }
 
 .button.hollow,
@@ -2311,30 +2311,30 @@ p + .stat {
 
 .button.hollow:hover,
 .button.hollow:focus {
-  border-color: #0c4d78;
-  color: #0c4d78;
+  border-color: #762c00;
+  color: #762c00;
 }
 
 .button.hollow.primary {
-  border: 1px solid #2199e8;
-  color: #2199e8;
+  border: 1px solid #EC5800;
+  color: #EC5800;
 }
 
 .button.hollow.primary:hover,
 .button.hollow.primary:focus {
-  border-color: #0c4d78;
-  color: #0c4d78;
+  border-color: #762c00;
+  color: #762c00;
 }
 
 .button.hollow.secondary {
-  border: 1px solid #777;
-  color: #777;
+  border: 1px solid #EC0000;
+  color: #EC0000;
 }
 
 .button.hollow.secondary:hover,
 .button.hollow.secondary:focus {
-  border-color: #3c3c3c;
-  color: #3c3c3c;
+  border-color: #760000;
+  color: #760000;
 }
 
 .button.hollow.success {
@@ -2815,7 +2815,7 @@ select[multiple] {
   padding: 1.25rem 1rem;
   line-height: 1;
   font-size: 0.75rem;
-  color: #2199e8;
+  color: #EC5800;
   position: relative;
   border-bottom: 1px solid #e6e6e6;
 }
@@ -2857,7 +2857,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 6px;
-  border-color: #2199e8 transparent transparent;
+  border-color: #EC5800 transparent transparent;
   border-top-style: solid;
   position: absolute;
   top: 50%;
@@ -2879,12 +2879,12 @@ select[multiple] {
   font-size: 0.6rem;
   text-align: center;
   border-radius: 50%;
-  background: #2199e8;
+  background: #EC5800;
   color: #fefefe;
 }
 
 .badge.secondary {
-  background: #777;
+  background: #EC0000;
   color: #fefefe;
 }
 
@@ -2936,7 +2936,7 @@ select[multiple] {
 }
 
 .breadcrumbs a {
-  color: #2199e8;
+  color: #EC5800;
 }
 
 .breadcrumbs a:hover {
@@ -3010,24 +3010,24 @@ select[multiple] {
 }
 
 .button-group.primary .button {
-  background: #2199e8;
+  background: #EC5800;
   color: #fff;
 }
 
 .button-group.primary .button:hover,
 .button-group.primary .button:focus {
-  background: #147cc0;
+  background: #bd4600;
   color: #fff;
 }
 
 .button-group.secondary .button {
-  background: #777;
+  background: #EC0000;
   color: #fff;
 }
 
 .button-group.secondary .button:hover,
 .button-group.secondary .button:focus {
-  background: #5f5f5f;
+  background: #bd0000;
   color: #fff;
 }
 
@@ -3098,19 +3098,19 @@ select[multiple] {
 }
 
 .callout.primary {
-  background-color: #def0fc;
+  background-color: #ffe5d6;
 }
 
 .callout.primary a {
-  color: #116ca8;
+  color: #a53e00;
 }
 
 .callout.primary a:hover {
-  color: #0a4063;
+  color: #592100;
 }
 
 .callout.secondary {
-  background-color: #ebebeb;
+  background-color: #ffd6d6;
 }
 
 .callout.success {
@@ -3221,7 +3221,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 6px;
-  border-color: transparent transparent transparent #2199e8;
+  border-color: transparent transparent transparent #EC5800;
   border-left-style: solid;
   position: absolute;
   top: 50%;
@@ -3235,7 +3235,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 6px;
-  border-color: transparent #2199e8 transparent transparent;
+  border-color: transparent #EC5800 transparent transparent;
   border-right-style: solid;
   float: left;
   margin-right: 0.75rem;
@@ -3296,7 +3296,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 5px;
-  border-color: #2199e8 transparent transparent;
+  border-color: #EC5800 transparent transparent;
   border-top-style: solid;
   position: absolute;
   top: 12px;
@@ -3309,7 +3309,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 5px;
-  border-color: transparent #2199e8 transparent transparent;
+  border-color: transparent #EC5800 transparent transparent;
   border-right-style: solid;
   float: left;
   margin-left: 0;
@@ -3322,7 +3322,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 5px;
-  border-color: transparent transparent transparent #2199e8;
+  border-color: transparent transparent transparent #EC5800;
   border-left-style: solid;
 }
 
@@ -3430,12 +3430,12 @@ select[multiple] {
   white-space: nowrap;
   cursor: default;
   border-radius: 0;
-  background: #2199e8;
+  background: #EC5800;
   color: #fefefe;
 }
 
 .label.secondary {
-  background: #777;
+  background: #EC0000;
   color: #fefefe;
 }
 
@@ -3919,7 +3919,7 @@ body {
 
 .pagination .current {
   padding: 0.1875rem 0.625rem;
-  background: #2199e8;
+  background: #EC5800;
   color: #fefefe;
   cursor: default;
 }
@@ -3962,11 +3962,11 @@ body {
 }
 
 .progress.primary .progress-meter {
-  background-color: #2199e8;
+  background-color: #EC5800;
 }
 
 .progress.secondary .progress-meter {
-  background-color: #777;
+  background-color: #EC0000;
 }
 
 .progress.success .progress-meter {
@@ -3986,7 +3986,7 @@ body {
   display: block;
   width: 0%;
   height: 100%;
-  background-color: #2199e8;
+  background-color: #EC5800;
   border-radius: 0;
 }
 
@@ -4044,7 +4044,7 @@ body {
   display: inline-block;
   width: 1.4rem;
   height: 1.4rem;
-  background-color: #2199e8;
+  background-color: #EC5800;
   transition: all 0.2s ease-in-out;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
@@ -4056,7 +4056,7 @@ body {
 }
 
 .slider-handle:hover {
-  background-color: #1583cc;
+  background-color: #c94b00;
 }
 
 .slider-handle.is-dragging {
@@ -4274,7 +4274,7 @@ input + .switch-paddle {
 }
 
 input:checked ~ .switch-paddle {
-  background: #2199e8;
+  background: #EC5800;
 }
 
 input:checked ~ .switch-paddle::after {
@@ -4467,7 +4467,7 @@ table.hover tr:nth-of-type(even):hover {
 }
 
 .tabs.primary {
-  background: #2199e8;
+  background: #EC5800;
 }
 
 .tabs.primary > li > a {
@@ -4476,7 +4476,7 @@ table.hover tr:nth-of-type(even):hover {
 
 .tabs.primary > li > a:hover,
 .tabs.primary > li > a:focus {
-  background: #1893e4;
+  background: #e05400;
 }
 
 .tabs-title {
@@ -4488,7 +4488,7 @@ table.hover tr:nth-of-type(even):hover {
   padding: 1.25rem 1.5rem;
   line-height: 1;
   font-size: 12px;
-  color: #2199e8;
+  color: #EC5800;
 }
 
 .tabs-title > a:hover,
@@ -4531,7 +4531,7 @@ table.hover tr:nth-of-type(even):hover {
 
 .thumbnail:hover,
 .thumbnail:focus {
-  box-shadow: 0 0 6px 1px rgba(33, 153, 232, 0.5);
+  box-shadow: 0 0 6px 1px rgba(236, 88, 0, 0.5);
 }
 
 .title-bar {
