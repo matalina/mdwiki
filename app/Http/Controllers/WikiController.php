@@ -24,9 +24,11 @@ class WikiController extends Controller
         $path = $this->page->getFilePath($arg1, $arg2, $arg3, $arg4, $arg5);
         $html = $this->page->getContentsOfFile($path);
         $title = $this->page->getTitleOfFile($path);
+        $front_matter = $this->page->getFrontMatterOfFile($path);
         
         View::share('page',$html);
         View::share('title',$title);
+        View::share('front_matter', $front_matter);
         return View::make('pages.content');
     }
     

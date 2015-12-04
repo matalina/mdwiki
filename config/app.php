@@ -149,10 +149,11 @@ return [
          * Added Service Providers...
          */
         App\Providers\DropBoxServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         LaravelBA\RouteBinder\RouteBinderServiceProvider::class,
         Intervention\Image\ImageServiceProviderLaravel5::class,
-
+        
     ],
 
     /*

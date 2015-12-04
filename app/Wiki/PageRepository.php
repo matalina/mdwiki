@@ -8,6 +8,7 @@ use League\CommonMark\Environment;
 use League\CommonMark\HtmlRenderer;
 use App\Composers\LaravelLinkRenderer;
 use App\Composers\WikiImageRenderer;
+use Symfony\Component\Yaml\Yaml;
 
 class PageRepository implements PageInterface
 {
@@ -76,9 +77,32 @@ class PageRepository implements PageInterface
     {
         $file = $this->disk->get($path);
         
-        $contents = $this->convertToHtml($file);
+        $parts = explode('---', $file);
+        
+        $markdown = $parts[count($parts) - 1];
+        
+        $contents = $this->convertToHtml($markdown);
         
         return $contents;
+    }
+    
+    public function getFrontMatterOfFile($path)
+    {
+        $file = $this->disk->get($path);
+        
+        $parts = explode('---', $file);
+        
+        if(count($parts) > 1) {
+            $front = $parts[1];
+        }
+        else {
+            $front = '';
+        }
+        
+        $array = Yaml::parse($front);
+        
+        return $array;
+        
     }
     
     public function getTitleOfFile($path)

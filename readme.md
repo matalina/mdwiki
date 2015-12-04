@@ -3,8 +3,12 @@
 A static file wiki-like system using markdown formatting.   
 
 ## Features
-* MDwiki has multiple storage types (dropbox, local, aws, rack by default - can add anything in the [Flysystem](http://flysystem.thephpleague.com/) or create your own adapters)
+* MDwiki has multiple storage types (dropbox, local, aws, rack by default - can add anything in the [Flysystem](http://flysystem.thephpleague.com/) or create your own adapters) - **defaults to local storage in storage/app/content**
 * CommonMark markdown parser
+* Automatic Navigation creation (with cache)
+* YAML front matter
+
+## File
 
 ## Change Log
 
@@ -17,4 +21,5 @@ A static file wiki-like system using markdown formatting.
 
 0.2.0 - Update
 * dropbox storage working (most other storage should work too)
-* 
+* automatic navigation creation implemented
+* yaml front matter

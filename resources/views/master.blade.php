@@ -4,6 +4,7 @@
         <title>{{ $title }}</title>
     </head>
     <body>
+        {!! $menu !!}
         @yield('content')
     </body>
 </html>
