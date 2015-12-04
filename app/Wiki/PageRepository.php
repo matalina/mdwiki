@@ -79,7 +79,7 @@ class PageRepository implements PageInterface
         
         $check = explode(PHP_EOL, $file);
         
-        if($check[0] == '---') {
+        if(preg_match('/\-\-\-/',$check[0])) {
             $parts = explode('---', $file);
             $markdown = $parts[count($parts) - 1];
         }
@@ -96,11 +96,9 @@ class PageRepository implements PageInterface
     {
         $file = $this->disk->get($path);
         
-        $parts = explode('---', $file);
-        
         $check = explode(PHP_EOL, $file);
         
-        if($check[0] == '---') {
+        if(preg_match('/\-\-\-/',$check[0])) {
             $parts = explode('---', $file);
             if(count($parts) > 1) {
                 $front = $parts[1];
