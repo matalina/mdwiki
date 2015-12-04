@@ -7,6 +7,7 @@ A static file wiki-like system using markdown formatting.
 * CommonMark markdown parser
 * Automatic Navigation creation (with cache)
 * YAML front matter
+* Foundation base SASS and Font Awesome icons integrated
 
 ## File
 
@@ -23,3 +24,6 @@ A static file wiki-like system using markdown formatting.
 * dropbox storage working (most other storage should work too)
 * automatic navigation creation implemented
 * yaml front matter
+
+0.3.0 - Update
+* integrated font awesome icons and foundation sass framework

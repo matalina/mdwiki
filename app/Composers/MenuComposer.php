@@ -35,10 +35,10 @@ class MenuComposer
         
         $hash = $this->hashFileList($all_files);
         
-        if(Cache::get('hash') == $hash) {
+        /*if(Cache::get('hash') == $hash) {
             $menu = Cache::get('menu');
         }
-        else {
+        ele {*/
             Cache::put('hash', $hash, 60);
             
             $items = new Collection();
@@ -48,21 +48,21 @@ class MenuComposer
             $menu = $this->recursiveMenuGeneration($items);
             
             Cache::put('menu', $menu, 60);
-        }
+        //}
         
         $view->with('menu', $menu);
     }
     
-    protected function recursiveMenuGeneration(Collection $items, $menu = '')
+    protected function recursiveMenuGeneration(Collection $items, $menu = '', $nested = false)
     {
-        $menu .= '<ul>';
+        $menu .= '<ul'.(!$nested?' data-drilldown':'').' class="vertical menu">';
         $sub_menu = '';
         foreach($items->all() as $name => $output) {
             if(is_string($output)) {
                 $menu .= '<li><a href="'.url($output).'">'.$name.'</a></li>';
             }
             else {
-                $menu .= '<li>'.$name.$this->recursiveMenuGeneration($output, $sub_menu).'</li>';
+                $menu .= '<li><a href="#">'.$name.'</a>'.$this->recursiveMenuGeneration($output, $sub_menu, true).'</li>';
             }
         }
         $menu .= '</ul>';
