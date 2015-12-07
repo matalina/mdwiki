@@ -22,14 +22,35 @@ class WikiRoutes implements RouteBinder
 
     public function addRoutes(Registrar $router)
     {
-        $router->get('image/{filename}', [
-            'as' => 'image',
-            'uses' => 'App\Http\Controllers\WikiController@getImage',
+        // Authentication routes...
+        $router->get('/', [
+            'as' => 'login-home',
+            'uses' => 'App\Http\Controllers\Auth\AuthController@getLogin'
         ]);
-        $router->get('/{arg1?}/{arg2?}/{arg3?}/{arg4?}/{arg5?}', [
-            'as' => 'page', 
-            'uses' => 'App\Http\Controllers\WikiController@getPage',
+        $router->get('auth/login', [
+            'as' => 'login',
+            'uses' => 'App\Http\Controllers\Auth\AuthController@getLogin'
         ]);
+        $router->post('auth/login', [
+            'as' => 'doLogin',
+            'uses' => 'App\Http\Controllers\Auth\AuthController@postLogin'
+        ]);
+        $router->get('auth/logout', [
+            'as' => 'logout',
+            'uses' => 'App\Http\Controllers\Auth\AuthController@getLogout'
+        ]);
+            
+        $router->group(['middleware' => 'auth'], function() use ($router) {
+            $router->get('image/{filename}', [
+                'as' => 'image',
+                'uses' => 'App\Http\Controllers\WikiController@getImage',
+            ]);
+            
+            $router->get('{arg1?}/{arg2?}/{arg3?}/{arg4?}/{arg5?}', [
+                'as' => 'page', 
+                'uses' => 'App\Http\Controllers\WikiController@getPage',
+            ]);
+        });
         
     }
 }

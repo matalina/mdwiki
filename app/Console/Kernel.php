@@ -13,7 +13,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \App\Console\Commands\Inspire::class,
+        \App\Console\Commands\ListUsersCommand::class,
+        \App\Console\Commands\AddUserCommand::class,
+        \App\Console\Commands\DeleteUserCommand::class,
     ];
 
     /**

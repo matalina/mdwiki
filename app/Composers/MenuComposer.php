@@ -6,6 +6,7 @@ use \Storage;
 use \Config;
 use \Cache;
 use Illuminate\Support\Collection;
+use \Auth;
 
 class MenuComposer
 {
@@ -35,20 +36,25 @@ class MenuComposer
         
         $hash = $this->hashFileList($all_files);
         
-        /*if(Cache::get('hash') == $hash) {
-            $menu = Cache::get('menu');
+        if(Auth::check()) {
+            if(Cache::get('hash') == $hash) {
+                $menu = Cache::get('menu');
+            }
+            else {
+                Cache::put('hash', $hash, 60);
+                
+                $items = new Collection();
+                
+                $items = $this->recursiveMenuCreation($items, $this->path);
+                
+                $menu = $this->recursiveMenuGeneration($items);
+                
+                Cache::put('menu', $menu, 60);
+            }
         }
-        ele {*/
-            Cache::put('hash', $hash, 60);
-            
-            $items = new Collection();
-            
-            $items = $this->recursiveMenuCreation($items, $this->path);
-            
-            $menu = $this->recursiveMenuGeneration($items);
-            
-            Cache::put('menu', $menu, 60);
-        //}
+        else {
+            $menu = '<ul data-drilldown class="vertical menu"><li><a href="'.route('login').'">home</a><li></ul>';
+        }
         
         $view->with('menu', $menu);
     }
@@ -58,7 +64,6 @@ class MenuComposer
         $menu .= '<ul'.(!$nested?' data-drilldown':'').' class="vertical menu">';
         $sub_menu = '';
         
-        
         foreach($items->all() as $name => $output) {
             if(is_string($output)) {
                 $menu .= '<li><a href="'.url($output).'">'.$name.'</a></li>';
@@ -67,6 +72,11 @@ class MenuComposer
                 $menu .= '<li><a href="#">'.$name.'</a>'.$this->recursiveMenuGeneration($output, $sub_menu, true).'</li>';
             }
         }
+        
+        if(!$nested) {
+            $menu .= '<li><a href="'.route('logout').'">logout</a></li>';
+        }
+        
         $menu .= '</ul>';
         return $menu;
     }
