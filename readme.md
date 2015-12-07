@@ -1,6 +1,6 @@
 # MDwiki
 
-A static file wiki-like system using markdown formatting.   There are two unique branches - master implements an all public site, private implements an all private site.
+A static file wiki-like system using markdown formatting.  Implemeing two branches - master: all pages public, private: all pages private. 
 
 ## Features
 * MDwiki has multiple storage types (dropbox, local, aws, rack by default - can add anything in the [Flysystem](http://flysystem.thephpleague.com/) or create your own adapters) - **defaults to local storage in storage/app/content**
@@ -12,6 +12,12 @@ A static file wiki-like system using markdown formatting.   There are two unique
 ## File
 
 ## Change Log
+
+__Note:__ When released all odd revisions will be public sites, and all even revisions will be private sites
+
+ie:  
+    1.0.0 - First Release of Public sites
+    2.0.0 - First Release of Private sites
 
 0.1.0 - Initial Release (2015-12-03)
 * local storage only
