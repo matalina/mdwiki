@@ -13,12 +13,6 @@ A static file wiki-like system using markdown formatting.   There are two unique
 
 ## Change Log
 
-__Note:__ When released all odd revisions will be public sites, and all even revisions will be private sites
-
-ie:  
-    1.0.0 - First Release of Public sites
-    2.0.0 - First Release of Private sites
-
 0.1.0 - Initial Release (2015-12-03)
 * local storage only
 * images hard coded to be stored in images folder
