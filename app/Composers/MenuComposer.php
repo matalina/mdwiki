@@ -37,20 +37,11 @@ class MenuComposer
         $hash = $this->hashFileList($all_files);
         
         if(Auth::check()) {
-            if(Cache::get('hash') == $hash) {
-                $menu = Cache::get('menu');
-            }
-            else {
-                Cache::put('hash', $hash, 60);
-                
-                $items = new Collection();
-                
-                $items = $this->recursiveMenuCreation($items, $this->path);
-                
-                $menu = $this->recursiveMenuGeneration($items);
-                
-                Cache::put('menu', $menu, 60);
-            }
+            $items = new Collection();
+            
+            $items = $this->recursiveMenuCreation($items, $this->path);
+            
+            $menu = $this->recursiveMenuGeneration($items);
         }
         else {
             $menu = '<ul data-drilldown class="vertical menu"><li><a href="'.route('login').'">home</a><li></ul>';
