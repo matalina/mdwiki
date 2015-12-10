@@ -81,6 +81,9 @@ class MenuComposer
         foreach($files as $file) {
             $segments = explode('/',$file);
             $uri = explode('.', $segments[count($segments) - 1]);
+            if(empty($url[0])) {
+                continue;
+            }
             preg_match('/[0-9]*\-?(.+)/', $uri[0], $match);
             $name = str_replace('-', ' ', $match[1]);
             $link = explode('.', $file);
