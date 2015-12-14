@@ -26,6 +26,10 @@ class ComposerServiceProvider extends ServiceProvider
         view()->creator(
             'master', 'App\Composers\MenuComposer'
         );
+        
+        view()->composer(
+            'pages.content', 'App\Composers\NextPreviousComposer'
+        );
     }
 
     /**
